@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="./assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="./assets/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="./assets/css/colors/default.css" id="theme" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./assets/js/kendo-ui/styles/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/js/kendo-ui/styles/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/js/kendo-ui/styles/kendo.bootstrap.mobile.min.css" />
+
+    <script src="./assets/js/jquery-3.2.1.min.js"></script>
+    <script src="./assets/js/kendo-ui/js/kendo.all.min.js"></script>
+    <script src="./assets/js/lodash.js"></script>
+
+    <script src='./assets/js/knockout-3.4.2.js'></script>
+    <script src="./assets/js/knockout.mapping-latest.js"></script>
+    <!-- <script src="./assets/js/knockout-kendo.min.js"></script> -->
+
+    <!-- Data File -->
+    <script src="./data.js"></script>   
+
+    <style>
+        .btn{margin: 0 5px;}
+
+        #searchQuery{width: 100%;}
+        #form-data-wrapper {padding: 15px 40px;}
+        #form-data-wrapper .form-group,
+        #form-data-wrapper .form-control,
+        .k-widget #form-data-wrapper * {box-sizing: border-box !important;}
+
+        #form-data-wrapper .form-group label { padding: 12px 0;}
+        #form-data-wrapper .form-group .form-control {width: 100%;}
+        .k-edit-form-container{width: unset !important;}
+
+        .k-grid-toolbar{display: none;}
+
+        .k-grid-header tr[role="row"] > th.k-header[data-field="GlobalRank"],
+        .k-grid-header tr[role="row"] > th.k-header[data-field="TldRank"],
+        .k-grid-header tr[role="row"] > th.k-header[data-index="5"],
+        .k-grid-content tr[role="row"] > td[role="gridcell"]:last-of-type{
+            text-align: center !important;
+        }
+        .k-grid-header tr[role="row"] > th.k-header[data-field="RefSubNets"],
+        .k-grid-header tr[role="row"] > th.k-header[data-field="RefIPs"]{
+            text-align: right !important;
+        }
+    </style>
+</head>
+
+<body class="fix-header hide-sidebar">
+    
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <div class="top-left-part">
+                    <!-- Logo -->
+                    <a class="logo" href="index.html">
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--><img src="./assets/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="./assets/images/admin-logo-dark.png" alt="home" class="light-logo" />
+                     </b>
+                        <!-- Logo text image you can use text also --><span class="hidden-xs">
+                        <!--This is dark logo text--><img src="./assets/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="./assets/images/admin-text-dark.png" alt="home" class="light-logo" />
+                     </span> </a>
+                </div>
+                <!-- /Logo -->
+                <!-- Search input and Toggle icon -->
+                <ul class="nav navbar-top-links navbar-left">
+                    <li><a href="javascript:void(0)" class="open-close waves-effect waves-light"><i class="ti-menu"></i></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav slimscrollsidebar">
+                <div class="sidebar-head">
+                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3> </div>
+                <div class="user-profile">
+                    <div class="dropdown user-pro-body">
+                        <div><img src="./assets/images/derrint.png" alt="user-img" class="img-circle"></div>
+                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lorensio Derrint</a>
+                        
+                    </div>
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li> <a href="index.html" class="waves-effect"><i class="mdi mdi-av-timer fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard </span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">UI Exercise</h4> </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+
+                <!-- ============================================================== -->
+                <!-- Recent comment, table & feed widgets -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Data Browser</h3>
+                            <div class="row p-t-10 p-b-20">
+                                <div class="col-md-1 text-right" style="padding: 6px 0;">Search</div>
+                                <div class="col-md-3" id="search-wrapper">
+                                    <input id="searchQuery" class="k-input k-widget k-textbox" data-bind="textInput: qSearch" />
+                                </div>
+                                <div class="col-md-1 text-right" style="padding: 6px 0;">TLD</div>
+                                <div class="col-md-3">
+                                    <select id="filterTLD" multiple="multiple" data-placeholder="Filter by TLD"></select>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <a class="btn btn-info" href="#" id="addData" data-bind="click: addData"><span class="k-icon k-i-plus"></span>Add Data</a>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <div id="grid"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Top 10 TLD</h3>
+                            <div class="p-t-10">
+                                <div id="chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
+        </div>
+    </div>
+    
+    <script src="./assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/js/custom.js"></script>
+
+    <script>
+        var dataJSON = data;
+        var dataObservable = ko.observableArray(dataJSON);
+        // var dataMapped = ko.mapping.fromJS(dataJSON);
+        // console.log(dataObservable());
+        
+        
+        function getTldOnly(dataObservable) {   
+            var TLD_unique = _.uniqBy(dataObservable, 'TLD');
+            var TLD_uniqueSorted = _.sortBy(TLD_unique, ['TLD']);
+            var TLD_only = _.map(TLD_uniqueSorted, 'TLD');;
+            return TLD_only;
+        }
+        
+        function getTopTen(dataObservable) {
+            var domains = [], counts = [];
+            var TLD_count = _.countBy(dataObservable(), 'TLD');
+            // --- Mengambil Top 10 TLD ---
+            var props = Object.keys(TLD_count).map(function(key) {
+                return { label: key, jumlah: this[key] };
+            }, TLD_count);
+            props.sort(function(p1, p2) { return p2.jumlah - p1.jumlah; });
+            var topTen = props.slice(0, 10);
+            
+            topTen.forEach(function (value, i) {
+                domains.push(value.label);
+                counts.push(value.jumlah);      
+            });
+            return {
+                domains: domains,
+                counts: counts
+            }
+        }
+
+        function filterGrid(multiSelectElem, searchQueryVal, filterTldVal){
+            if(multiSelectElem.length > 0){
+                var filterArrays = { 
+                    logic: "and",
+                    filters: [
+                        {
+                            logic: "or",
+                            filters: []
+                        },
+                        {
+                            logic: "or",
+                            filters: [
+                                { field: "GlobalRank", operator: "eq", value: searchQueryVal },
+                                { field: "TldRank", operator: "eq", value: searchQueryVal },
+                                { field: "Domain", operator: "contains", value: searchQueryVal }
+                            ]
+                        },
+                    ],
+                };
+                $.each(filterTldVal, function (i, v) {
+                    filterArrays.filters[0].filters.push(
+                        { field: "TLD", operator: "eq", value: v }
+                    );
+                });   
+            }else{
+                var filterArrays = {    
+                    logic: "or",
+                    filters: [
+                        { field: "GlobalRank", operator: "eq", value: searchQueryVal },
+                        { field: "TldRank", operator: "eq", value: searchQueryVal },
+                        { field: "Domain", operator: "contains", value: searchQueryVal }
+                    ]
+                }   
+            }
+            return filterArrays;
+        }
+
+        function generateChart(topTen, chart, refresh=false) {
+            var domains = topTen.domains;
+            var counts = topTen.counts;
+
+            chart.setOptions({ 
+                series: [{
+                    data: counts,
+                    color: "#41b3f9"
+                }],
+                categoryAxis: {
+                    categories: domains,
+                    line: {
+                        visible: false
+                    },
+                    labels: {
+                        padding: {top: 10}
+                    }
+                },
+                legend: {
+                    position: "top"
+                },
+                seriesDefaults: {
+                    type: "column"
+                },
+                valueAxis: {
+                    labels: {
+                        format: "{0}"
+                    },
+                    line: {
+                        visible: false
+                    },
+                    axisCrossingValue: 0
+                },
+                tooltip: {
+                    visible: true,
+                    format: "{0}%",
+                    template: "${category} : ${value}"
+                }
+            })
+            if(refresh==true){
+                chart.refresh();
+            }
+        }
+
+        function generateMultiSelect(dataTLD, kendoMultiSelect, refresh=false) {
+            kendoMultiSelect.setDataSource({
+                data: dataTLD,
+                pageSize: 500
+            });
+            
+            if(refresh==true){
+                kendoMultiSelect.refresh();
+            }
+        }
+
+        function getTldInput(value) {
+            var domainArray = value.split('.');
+            var tld = domainArray.slice(-1)[0];
+            $('#TLD').val(tld);
+            $('#TLD').change();
+        }
+
+        // // --- Temporary Unused ---
+        // function getIndexById(id, dataObservable) {
+        //     var idx,
+        //         l = dataObservable.length;
+
+        //     for (var j=0; j < l; j++) {
+        //         if (dataObservable[j]._id == id) {
+        //             return j;
+        //         }
+        //     }
+        //     return null;
+        // }
+
+        
+        $(document).ready(function () {
+
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: function(e) {
+                        e.success(dataObservable());
+                        dataObservable.valueHasMutated();
+                    },
+                    update: function(e) {
+                        // on success
+                        e.success(e.data);
+                        
+                        // --- updating data - not working ---
+                        // dataObservable[getIndexById(e.data._id, dataObservable())] = e.data;
+                        // console.log(dataObservable[getIndexById(e.data._id, dataObservable())]);
+                        // console.log(getIndexById(e.data._id, dataObservable()));
+                        // dataObservable.valueHasMutated();
+
+                        // --- updating data - working ---
+                        _.remove(dataObservable(), obj => obj._id.$oid === e.data._id.$oid);
+                        dataObservable.push(e.data);
+
+                        // --- refresh chart ---
+                        generateChart(getTopTen(dataObservable), chart, true);
+                        
+                        // --- refresh multi select ---
+                        generateMultiSelect(getTldOnly(dataObservable()), filterTLD);
+
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    destroy: function (e) {
+
+                        // on success
+                        e.success();
+                        
+                        // --- removing selected item
+                        _.remove(dataObservable(), obj => obj._id.$oid === e.data._id.$oid);
+
+                        // --- refresh chart
+                        generateChart(getTopTen(dataObservable), chart, true);
+
+                        // --- refresh multi select ---
+                        generateMultiSelect(getTldOnly(dataObservable()), filterTLD);
+
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    create: function (e) {
+                        // batch is disabled
+                        // generate appropriate data item ID and save the new items to the original datasource
+                        e.data._id = {$oid : mongoObjectId()};
+                        
+                        // on success return the new data items with IDs (assuming schema.data is NOT SET)
+                        e.success(e.data);
+                                                
+                        // --- add item to data ---
+                        dataObservable.push(e.data);
+                        dataObservable.valueHasMutated();
+
+                        // --- refresh chart
+                        generateChart(getTopTen(dataObservable), chart, true);
+
+                        // --- refresh multi select ---
+                        generateMultiSelect(getTldOnly(dataObservable()), filterTLD);
+                        
+
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    parameterMap: function(options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return {models: kendo.stringify(options.models)};
+                        }
+                    }
+                },
+                batch: false,
+                pageSize: 10,
+                sort: {
+                    field: "GlobalRank",
+                    dir: "asc"
+                },
+                schema: {
+                    model: {
+                        id: "_id",
+                        fields: {
+                            _id: {editable: false},
+                            GlobalRank: {type: "number", validation: { required: true, min: 1}},
+                            TldRank: {type: "number", validation: { required: true, min: 1}},
+                            Domain: {type: "string", validation: { required: true }},
+                            TLD: {type: "string", validation: { required: true }},
+                            RefSubNets: {type: "number", validation: { min: 0, required: true }},
+                            RefIPs: {type: "number", validation: { min: 0, required: true }},
+                        }
+                    }
+                }
+            });
+
+            var grid = $("#grid").kendoGrid({
+                dataSource: dataSource,
+                toolbar: ["create"],
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                columns: [
+                    {
+                        title: "Global Rank",
+                        field: "GlobalRank",
+                        template: "<div class='text-center'>#:GlobalRank#</div>",
+                        width: '16%'
+                    }, {
+                        title: "TLD Rank",
+                        template: "<div class='text-center'>#:TldRank#</div>",
+                        field: "TldRank",
+                        width: '13%'
+                    }, {
+                        title: "Domain",
+                        field: "Domain",
+                        template: "<a href='http://#:Domain#' target='_blank'><b>#:data.Domain#</b></a>",
+                        width: '24%'
+                    }, {
+                        title: "Ref Sub Nets",
+                        field: "RefSubNets",
+                        template: "<div class='text-right'>#:RefSubNets#</div>",
+                        width: '15%'
+                    }, {
+                        title: "Ref IPs",
+                        field: "RefIPs",
+                        template: "<div class='text-right'>#:RefIPs#</div>",
+                        width: '14%'
+                    }, 
+                    { 
+                        command: [
+                            {
+                                name: "edit",
+                                template : "<a class='btn btn-success k-grid-edit text-center' href='##' ><i class='fa fa-pencil'></i></a>",
+                            },
+                            {
+                                name: "destroy",
+                                template : "<a class='btn btn-danger k-grid-delete text-center' href='##' ><i class='fa fa-trash'></i></a>"
+                            }
+                        ], 
+                        title: "Action",
+                        width: '18%'
+                    }
+                ],
+                editable : {
+                    mode: "popup",
+                    template: kendo.template($("#template").html()),
+                    window: {
+                        title: "Form Data",
+                        width: '40%'
+                    }
+                }
+            }).data("kendoGrid");
+
+            // --- create CHART ---
+            var chart = $("#chart").kendoChart().data("kendoChart");
+            generateChart(getTopTen(dataObservable), chart);
+
+            // create MultiSelect from select HTML element
+            var elemFilterTLD = $("#filterTLD");
+            var filterTLD = elemFilterTLD.kendoMultiSelect().data("kendoMultiSelect");
+            generateMultiSelect(getTldOnly(dataObservable()), filterTLD);
+
+            elemFilterTLD.change(function(){
+                var searchQueryVal = $('#searchQuery').val();
+                var filterTldVal = elemFilterTLD.val();
+                var filterArrays = filterGrid($('#filterTLD_taglist').children('.k-button'), searchQueryVal, filterTldVal)
+                grid.dataSource.filter(filterArrays);
+            });
+
+
+            // --- Search Query ---
+            var myViewModel = {
+                qSearch: ko.observable("")  
+            };
+
+            ko.applyBindings(myViewModel, document.getElementById("search-wrapper"));
+
+            myViewModel.qSearch.subscribe(function(newValue) {
+                var searchQueryVal = $('#searchQuery').val();
+                var filterTldVal = elemFilterTLD.val();
+                var filterArrays = filterGrid($('#filterTLD_taglist').children('.k-button'), searchQueryVal, filterTldVal)
+                grid.dataSource.filter(filterArrays);
+            });
+
+
+            var myViewModel2 = {
+                numberOfClicks : ko.observable(0),
+                addData : function() {
+                    $('.k-button.k-grid-add').click();
+                    $('#_id').val(mongoObjectId);
+                }
+            };
+            ko.applyBindings(myViewModel2, document.getElementById("addData"));
+
+
+        });
+
+        var mongoObjectId = function () {
+            var timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+            return timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function() {
+                return (Math.random() * 16 | 0).toString(16);
+            }).toLowerCase();
+        };
+    </script>
+    
+    <script type="text/x-kendo-template" id="template">    
+        <div id="form-data-wrapper" class="form-inline" >
+            <form>
+                <div class="row">
+                    <div class="form-group col-md-3 text-right">
+                        <label for="_id">_id</label>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="text" class="form-control" id="_id" value="#= _id.$oid #" readonly>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 text-right">
+                        <label for="GlobalRank">Global Rank</label>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="text" class="form-control" id="GlobalRank" name="GlobalRank" onFocus="this.select();" value="#= GlobalRank #">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 text-right">
+                        <label for="TldRank">TLD Rank</label>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="text" class="form-control" id="TldRank" name="TldRank" onFocus="this.select();" value="#= TldRank #">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 text-right">
+                        <label for="Domain">Domain</label>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="text" class="form-control" id="Domain" name="Domain" onFocus="this.select();" value="#= Domain #" onkeyup="getTldInput(this.value)">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 text-right">
+                        <label for="TLD">TLD</label>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="text" class="form-control" id="TLD" name="TLD" value="#= TLD #" readonly>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 text-right">
+                        <label for="RefSubNets">Ref Sub Nets</label>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="text" class="form-control" id="RefSubNets" name="RefSubNets" onFocus="this.select();" value="#= RefSubNets #">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 text-right">
+                        <label for="RefIPs">Ref IPs</label>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="text" class="form-control" id="RefIPs" name="RefIPs" onFocus="this.select();" value="#= RefIPs #">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </form>            
+        </div>
+    </script>
+    
+    
+</body>
+
+</html>
