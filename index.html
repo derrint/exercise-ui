@@ -376,7 +376,6 @@
                         //e.error("XHR response", "status code", "error message");
                     },
                     create: function (e) {
-                        // batch is disabled
                         // generate appropriate data item ID and save the new items to the original datasource
                         e.data._id = {$oid : mongoObjectId()};
                         
