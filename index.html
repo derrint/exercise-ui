@@ -36,6 +36,8 @@
 
     <style>
         .btn{margin: 0 5px;}
+        .fa-arrow-up {color: #7ace4c;}
+        .fa-arrow-down {color: #f33155;}
 
         #searchQuery{width: 100%;}
         #form-data-wrapper {padding: 15px 40px;}
@@ -438,7 +440,15 @@
                         title: "Global Rank",
                         field: "GlobalRank",
                         template: "<div class='text-center'>#:GlobalRank#</div>",
-                        width: '16%'
+                        width: '14%'
+                    }, {
+                        title: "",
+                        field: "",
+                        template: "<div class='text-center'>asdas</div>",
+                        // template: "#if(ErrorDesc==null){# #: DeviceLabel # #}else If(ErrorDesc==""){# #: DeviceLabel # #}else{# #: DeviceText # #}#",
+                        template: "<div class='text-center'> #if(GlobalRank < PrevGlobalRank) {# <i class='fa fa-arrow-up'></i> #} else if(GlobalRank == PrevGlobalRank) {# #} else {# <i class='fa fa-arrow-down'></i> #}# </div>",
+
+                        width: '7%'
                     }, {
                         title: "TLD Rank",
                         template: "<div class='text-center'>#:TldRank#</div>",
@@ -448,7 +458,7 @@
                         title: "Domain",
                         field: "Domain",
                         template: "<a href='http://#:Domain#' target='_blank'><b>#:data.Domain#</b></a>",
-                        width: '24%'
+                        width: '20%'
                     }, {
                         title: "Ref Sub Nets",
                         field: "RefSubNets",
